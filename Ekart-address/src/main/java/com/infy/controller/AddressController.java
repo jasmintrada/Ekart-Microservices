@@ -37,4 +37,9 @@ public class AddressController {
 		return addressService.updateAddress(addressDTO);
 	}
 	
+	@GetMapping("/delete/{addressId}")
+	public void deleteAddress(@PathVariable int addressId) throws Exception {
+		addressService.deleteAddress(addressId);
+	}
+	
 }

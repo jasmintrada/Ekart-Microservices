@@ -51,4 +51,11 @@ public class AddressServiceImpl implements AddressService {
 		return AddressDTO.getDTO(address);
 	}
 
+	@Override
+	public String deleteAddress(int id) throws Exception {
+		// TODO Auto-generated method stub
+		addressRepo.deleteById(id);
+		return "Success";
+	}
+
 }

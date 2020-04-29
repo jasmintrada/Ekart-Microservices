@@ -28,18 +28,26 @@ public class AddressController {
 	} 
 	
 	@PostMapping("/saveAddress")
-	public AddressDTO saveAddress(@RequestBody AddressDTO addressDTO) throws Exception {
-		return addressService.saveAddress(addressDTO);
+	public List<AddressDTO> saveAddress(@RequestBody AddressDTO addressDTO) throws Exception {
+		addressService.saveAddress(addressDTO);
+		return addressService.getAddresses(addressDTO.getUserId());
 	}
 	
 	@PostMapping("/updateAddress")
-	public AddressDTO updateAddress(@RequestBody AddressDTO addressDTO) throws Exception{
-		return addressService.updateAddress(addressDTO);
+	public List<AddressDTO> updateAddress(@RequestBody AddressDTO addressDTO) throws Exception{
+		addressService.updateAddress(addressDTO);
+		return addressService.getAddresses(addressDTO.getUserId());
 	}
 	
-	@GetMapping("/delete/{addressId}")
-	public void deleteAddress(@PathVariable int addressId) throws Exception {
+	@GetMapping("/delete/{addressId}/{userId}")
+	public List<AddressDTO> deleteAddress(@PathVariable int addressId,@PathVariable int userId) throws Exception {
 		addressService.deleteAddress(addressId);
+		return addressService.getAddresses(userId);
+	}
+	
+	@GetMapping("/setDeafult/{addressId}/{userId}")
+	public List<AddressDTO> setDefaultAddress(@PathVariable int addressId,@PathVariable int userId) throws Exception{
+		return addressService.setDefaultAddress(addressId, userId);
 	}
 	
 }

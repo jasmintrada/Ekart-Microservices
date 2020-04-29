@@ -1,5 +1,6 @@
 package com.infy.service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,8 +14,10 @@ public class StateService {
 	@Autowired
 	private StateRepository stateRepo;
 	
-	public List<String> getStates(String city){
-		return stateRepo.findByCity(city).stream().map((state)->{return state.getState();}).collect(Collectors.toList());
+	public List<String> getStates(String country){
+		List<String> states =  stateRepo.findByCountry(country).stream().map((state)->{return state.getState();}).collect(Collectors.toList());
+		Collections.sort(states);
+		return states;
 	}
 	
 }

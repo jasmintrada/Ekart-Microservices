@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: zull
+server:
+  port:  5000
+
+zuul:
+  routes:
+    UserMS:
+      path: /user/**
+      strip-prefix: false
+    ProductMS:
+      path: /product/**
+      strip-prefix: false
+    RatingMS:
+      path: /ratings/**
+      strip-prefix: false
+    PurchaseDetailsMS:
+      path: /orderDetails/**
+      strip-prefix: false
+    DealsMS:
+      path: /deals/**
+      strip-prefix: false
+    CartMS:
+      path: /cart/**
+      strip-prefix: false
+    AddressMS:
+      path: /address/**
+      strip-prefix: false
+    location:
+      path: /location/**
+      strip-prefix: false
+      service-id: AddressMS
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:2222/eureka

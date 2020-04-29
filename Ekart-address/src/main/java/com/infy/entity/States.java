@@ -13,7 +13,7 @@ public class States {
 	@Id
 	@GeneratedValue(generator="stateGenerator")
 	private int id;
-	private String city;
+	private String country;
 	private String state;
 	public int getId() {
 		return id;
@@ -21,11 +21,11 @@ public class States {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getCity() {
-		return city;
+	public String getCountry() {
+		return country;
 	}
-	public void setCity(String city) {
-		this.city = city;
+	public void setCountry(String country) {
+		this.country = country;
 	}
 	public String getState() {
 		return state;

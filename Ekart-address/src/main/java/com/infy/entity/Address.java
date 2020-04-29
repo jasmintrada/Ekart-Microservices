@@ -23,7 +23,15 @@ public class Address {
 	private String country;
 	private long phoneNo;
 	private String userName;
+	private boolean defaultAddress;
 	
+	
+	public boolean isDefaultAddress() {
+		return defaultAddress;
+	}
+	public void setDefaultAddress(boolean defaultAddress) {
+		this.defaultAddress = defaultAddress;
+	}
 	public long getPhoneNo() {
 		return phoneNo;
 	}

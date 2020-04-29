@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.infy.service.CityService;
+import com.infy.service.CountryService;
 import com.infy.service.StateService;
 
 @RestController
@@ -21,16 +21,16 @@ public class LocationController {
 	private StateService stateService;
 	
 	@Autowired
-	private CityService cityService;
+	private CountryService countryService;
 	
-	@GetMapping("/city")
+	@GetMapping("/country")
 	public List<String> getAllCities(){
-		return cityService.getCities();
+		return countryService.getCities();
 	}
 	
-	@GetMapping("/states/{city}")
-	public List<String> getStateByCity(@PathVariable String city){
-		return stateService.getStates(city);
+	@GetMapping("/states/{country}")
+	public List<String> getStateByCity(@PathVariable String country){
+		return stateService.getStates(country);
 	}
 	
 	

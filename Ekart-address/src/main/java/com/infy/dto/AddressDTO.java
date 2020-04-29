@@ -14,7 +14,15 @@ public class AddressDTO {
 	private String country;
 	private long phoneNo;
 	private String userName;
+	private boolean defaultAddress;
 	
+	
+	public boolean isDefaultAddress() {
+		return defaultAddress;
+	}
+	public void setDefaultAddress(boolean defaultAddress) {
+		this.defaultAddress = defaultAddress;
+	}
 	public long getPhoneNo() {
 		return phoneNo;
 	}
@@ -95,6 +103,7 @@ public class AddressDTO {
 		addressDTO.setUserId(address.getUserId());
 		addressDTO.setPhoneNo(address.getPhoneNo());
 		addressDTO.setUserName(address.getUserName());
+		addressDTO.setDefaultAddress(address.isDefaultAddress());
 		return addressDTO;
 	}
 	public Address getEntity(Address address) {
@@ -110,6 +119,7 @@ public class AddressDTO {
 		addressDTO.setUserId(this.getUserId());
 		addressDTO.setPhoneNo(this.getPhoneNo());
 		addressDTO.setUserName(this.getUserName());
+		addressDTO.setDefaultAddress(this.isDefaultAddress());
 		return addressDTO;
 	}
 }

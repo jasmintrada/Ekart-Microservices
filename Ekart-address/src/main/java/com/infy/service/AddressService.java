@@ -9,4 +9,5 @@ public interface AddressService {
 	AddressDTO updateAddress(AddressDTO addressDTO) throws Exception ;
 	AddressDTO saveAddress(AddressDTO addressDTO) throws Exception ;
 	String deleteAddress(int id) throws Exception ;
+	List<AddressDTO> setDefaultAddress(int addressId,int userId) throws Exception;
 }

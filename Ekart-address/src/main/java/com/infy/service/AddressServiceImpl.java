@@ -3,6 +3,7 @@ package com.infy.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,16 @@ public class AddressServiceImpl implements AddressService {
 		List<AddressDTO> addressDTOList = new ArrayList<>();
 		for(Address address : addressList) {
 			addressDTOList.add(AddressDTO.getDTO(address));
+		}
+		if(addressDTOList.size()>1) {
+			for(int i=1;i<addressDTOList.size();i++) {
+				if(addressDTOList.get(i).isDefaultAddress()) {
+					AddressDTO add = addressDTOList.get(i);
+					addressDTOList.set(i, addressDTOList.get(0));
+					addressDTOList.set(0, add);
+					break;
+				}
+			}
 		}
 		return addressDTOList;
 	}
@@ -56,6 +67,21 @@ public class AddressServiceImpl implements AddressService {
 		// TODO Auto-generated method stub
 		addressRepo.deleteById(id);
 		return "Success";
+	}
+
+	@Override
+	public List<AddressDTO> setDefaultAddress(int addressId,int userId) throws Exception {
+		// TODO Auto-generated method stub
+		List<Address> addresses = addressRepo.findByUserId(userId).stream().map(
+				(adrs)->{
+					if(adrs.getId()==addressId) 
+						adrs.setDefaultAddress(true);
+					else
+						adrs.setDefaultAddress(false);
+					return adrs;
+				}).collect(Collectors.toList());
+		addressRepo.saveAll(addresses);
+		return this.getAddresses(userId);
 	}
 
 }

@@ -7,10 +7,10 @@ import javax.persistence.Id;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@GenericGenerator(name="cityGenerator",strategy="native")
-public class City {
+@GenericGenerator(name="countryGenerator",strategy="native")
+public class Countries {
 	@Id
-	@GeneratedValue(generator="cityGenerator")
+	@GeneratedValue(generator="countryGenerator")
 	private int id;
 	private String name;
 	public int getId() {

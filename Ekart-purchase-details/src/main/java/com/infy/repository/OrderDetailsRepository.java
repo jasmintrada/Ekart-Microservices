@@ -9,4 +9,5 @@ import com.infy.entity.OrderDetails;
 public interface OrderDetailsRepository extends JpaRepository<OrderDetails, Integer> {
 
 	List<OrderDetails> findByUserId(int userId);
+	List<OrderDetails> findByOrderId(int orderId);
 }

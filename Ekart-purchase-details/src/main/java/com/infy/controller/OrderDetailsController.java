@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.infy.dto.OrderDetailsDTO;
 import com.infy.dto.ProductDTO;
 import com.infy.service.OrderDetailsServiceImpl;
 import com.infy.util.OrderDetailsException;
@@ -34,4 +35,10 @@ public class OrderDetailsController {
 		response.setMsg(productList);
 		return response;
 	}
+	
+	@GetMapping("/orderDetails/{orderId}")
+	public List<OrderDetailsDTO> getDetails(@PathVariable int orderId){
+		return orderService.getDetails(orderId);
+	}
+	
 }

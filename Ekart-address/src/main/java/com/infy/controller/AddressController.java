@@ -22,6 +22,11 @@ public class AddressController {
 	@Autowired
 	private AddressServiceImpl addressService;
 	
+	@GetMapping("/getAddressById/{addressId}")
+	public AddressDTO getAddressById(@PathVariable int addressId) {
+		return addressService.getAddressById(addressId);
+	}
+	
 	@GetMapping("/getAddress/{userId}")
 	public List<AddressDTO> getAddressbyUserId(@PathVariable int userId) throws Exception{
 		return addressService.getAddresses(userId);

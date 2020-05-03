@@ -84,4 +84,10 @@ public class AddressServiceImpl implements AddressService {
 		return this.getAddresses(userId);
 	}
 
+	@Override
+	public AddressDTO getAddressById(int addressId) {
+		// TODO Auto-generated method stub
+		return AddressDTO.getDTO(this.addressRepo.findById(addressId).get());
+	}
+
 }

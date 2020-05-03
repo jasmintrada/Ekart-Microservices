@@ -34,6 +34,9 @@ zuul:
     OrderMS:
       path: /order/**
       strip-prefix: false
+    cardMS:
+      path: /card/**
+      strip-prefix: false
 
 
 eureka:

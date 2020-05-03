@@ -1,5 +1,6 @@
 package com.infy.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -19,8 +20,15 @@ public class CardServiceImpl implements CardService {
 	CardRepository cardRepo;
 	
 	@Override
-	public List<CardDTO> saveCard(CardDTO card) {
+	public List<CardDTO> saveCard(CardDTO card) throws Exception {
 		// TODO Auto-generated method stub
+		LocalDate today = LocalDate.now();
+		if(card.getExpDate().compareTo(today)<0) {
+			throw new Exception("Card is outdated.");
+		}
+		List<Card> cards = cardRepo.findByUserId(card.getUserId());
+		long size = cards.stream().filter((card1)->{ return card1.getCardNo().equals(card.getCardNo());}).count();
+		if(size>0) throw new Exception("Card with this card number already exists.");
 		if(card.getId()==0) {
 			cardRepo.save(card.getEntity(null));
 		}else {

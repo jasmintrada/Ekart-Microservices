@@ -28,7 +28,7 @@ public class CardController {
 	}
 	
 	@PostMapping("/saveCard")
-	public List<CardDTO> saveCard(@RequestBody CardDTO cardDTO){
+	public List<CardDTO> saveCard(@RequestBody CardDTO cardDTO) throws Exception{
 		return cardService.saveCard(cardDTO);
 	} 
 	

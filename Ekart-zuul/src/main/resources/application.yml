@@ -34,8 +34,11 @@ zuul:
     OrderMS:
       path: /order/**
       strip-prefix: false
-    cardMS:
+    CardMS:
       path: /card/**
+      strip-prefix: false
+    WishListMS:
+      path: /wishlist/**
       strip-prefix: false
 
 

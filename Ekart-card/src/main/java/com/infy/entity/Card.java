@@ -19,7 +19,6 @@ public class Card {
 	private int cvv;
 	private LocalDate expDate;
 	private String userName;
-	private double amount;
 	private int userId;
 	
 	public int getUserId() {
@@ -57,12 +56,6 @@ public class Card {
 	}
 	public void setUserName(String userName) {
 		this.userName = userName;
-	}
-	public double getAmount() {
-		return amount;
-	}
-	public void setAmount(double amount) {
-		this.amount = amount;
 	}
 	
 }

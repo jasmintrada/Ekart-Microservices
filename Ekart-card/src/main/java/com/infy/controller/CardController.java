@@ -36,6 +36,9 @@ public class CardController {
 	public boolean verifyCard(@RequestBody CardDTO cardDTO) {
 		return cardService.checkCard(cardDTO);
 	}
-	
+	@GetMapping("/deleteCard/{cardId}/{userId}")
+	public List<CardDTO> deleteCard(@PathVariable int cardId,@PathVariable int userId){
+		return cardService.deleteCard(cardId, userId);
+	}
 
 }

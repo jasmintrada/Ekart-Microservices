@@ -45,4 +45,11 @@ public class CardServiceImpl implements CardService {
 		return cardE.getCvv()==card.getCvv();
 	}
 
+	@Override
+	public List<CardDTO> deleteCard(int cardId,int userId) {
+		// TODO Auto-generated method stub
+		cardRepo.deleteById(cardId);
+		return getAllCardByUser(userId);
+	}
+
 }

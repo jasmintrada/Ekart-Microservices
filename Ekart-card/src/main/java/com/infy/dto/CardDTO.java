@@ -10,7 +10,6 @@ public class CardDTO {
 	private int cvv;
 	private LocalDate expDate;
 	private String userName;
-	private double amount;
 private int userId;
 	
 	public int getUserId() {
@@ -49,12 +48,7 @@ private int userId;
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public double getAmount() {
-		return amount;
-	}
-	public void setAmount(double amount) {
-		this.amount = amount;
-	}
+	
 	
 	public static CardDTO getDTO(Card card) {
 		CardDTO cardDTO = new CardDTO();
@@ -67,7 +61,6 @@ private int userId;
 	}
 	public Card getEntity(Card card) {
 		card = card==null? new Card():card;
-		card.setAmount(this.getAmount());
 		card.setCardNo(this.getCardNo());
 		card.setCvv(this.getCvv());
 		card.setExpDate(this.getExpDate());

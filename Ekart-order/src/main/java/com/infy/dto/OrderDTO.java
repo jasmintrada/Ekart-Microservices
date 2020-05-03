@@ -3,7 +3,7 @@ package com.infy.dto;
 import java.time.LocalDate;
 import java.util.List;
 
-import com.infy.entity.Order;
+import com.infy.entity.Orders;
 
 
 public class OrderDTO {
@@ -20,7 +20,30 @@ public class OrderDTO {
 	private boolean btnCancel;
 	private boolean btnReturn;
 	private List<OrderDetailsDTO> orderDetails;
+	private AddressDTO shippingAddress;
+	private LocalDate expectedDeliveryDate;
+	private double deliveryCharge;
 	
+	
+	
+	public AddressDTO getShippingAddress() {
+		return shippingAddress;
+	}
+	public void setShippingAddress(AddressDTO shippingAddress) {
+		this.shippingAddress = shippingAddress;
+	}
+	public LocalDate getExpectedDeliveryDate() {
+		return expectedDeliveryDate;
+	}
+	public void setExpectedDeliveryDate(LocalDate expectedDeliveryDate) {
+		this.expectedDeliveryDate = expectedDeliveryDate;
+	}
+	public double getDeliveryCharge() {
+		return deliveryCharge;
+	}
+	public void setDeliveryCharge(double deliveryCharge) {
+		this.deliveryCharge = deliveryCharge;
+	}
 	public List<OrderDetailsDTO> getOrderDetails() {
 		return orderDetails;
 	}
@@ -100,7 +123,7 @@ public class OrderDTO {
 	public void setBtnReturn(boolean btnReturn) {
 		this.btnReturn = btnReturn;
 	}
-	public static OrderDTO getDTO(Order order) {
+	public static OrderDTO getDTO(Orders order) {
 		OrderDTO orderDTO = new OrderDTO();
 		orderDTO.setBtnCancel(order.isBtnCancel());
 		orderDTO.setBtnReturn(order.isBtnReturn());
@@ -114,10 +137,12 @@ public class OrderDTO {
 		orderDTO.setTotal(order.getTotal());
 		orderDTO.setUserId(order.getUserId());
 		orderDTO.setOrderStatus(order.getOrderStatus());
+		orderDTO.setDeliveryCharge(order.getDeliveryCharge());
+		orderDTO.setExpectedDeliveryDate(order.getExpectedDeliveryDate());
 		return orderDTO;
 	}
-	public Order getEntity() {
-		Order orderDTO = new Order();
+	public Orders getEntity() {
+		Orders orderDTO = new Orders();
 		orderDTO.setBtnCancel(this.isBtnCancel());
 		orderDTO.setBtnReturn(this.isBtnReturn());
 		orderDTO.setBtnReviewProduct(this.isBtnReviewProduct());
@@ -130,6 +155,9 @@ public class OrderDTO {
 		orderDTO.setTotal(this.getTotal());
 		orderDTO.setUserId(this.getUserId());
 		orderDTO.setOrderStatus(this.getOrderStatus());
+		orderDTO.setDeliveryCharge(this.getDeliveryCharge());
+		orderDTO.setShippingAddress(this.getShippingAddress().getId());
+		orderDTO.setExpectedDeliveryDate(this.getExpectedDeliveryDate());
 		return orderDTO;
 	}
 }

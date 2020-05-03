@@ -31,6 +31,9 @@ zuul:
       path: /location/**
       strip-prefix: false
       service-id: AddressMS
+    OrderMS:
+      path: /order/**
+      strip-prefix: false
 
 
 eureka:

@@ -12,20 +12,39 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @GenericGenerator(name = "OrderGenerator",strategy = "native")
-public class Order {
+public class Orders {
 	@Id
 	@GeneratedValue(generator = "OrderGenerator")
 	private int id;
 	private int userId;
 	private double total;
 	private String orderStatus;
-	@Temporal(TemporalType.DATE)
+	private int shippingAddress;
+	private double deliveryCharge;
+	
+	
+	public int getShippingAddress() {
+		return shippingAddress;
+	}
+	public void setShippingAddress(int shippingAddress) {
+		this.shippingAddress = shippingAddress;
+	}
+	public LocalDate getExpectedDeliveryDate() {
+		return expectedDeliveryDate;
+	}
+	public void setExpectedDeliveryDate(LocalDate expectedDeliveryDate) {
+		this.expectedDeliveryDate = expectedDeliveryDate;
+	}
+	public double getDeliveryCharge() {
+		return deliveryCharge;
+	}
+	public void setDeliveryCharge(double deliveryCharge) {
+		this.deliveryCharge = deliveryCharge;
+	}
+	private LocalDate expectedDeliveryDate;
 	private LocalDate orderedDate;
-	@Temporal(TemporalType.DATE)
 	private LocalDate deliveryDate;
-	@Temporal(TemporalType.DATE)
 	private LocalDate returnDate;
-	@Temporal(TemporalType.DATE)
 	private LocalDate cancelledDate;
 	private boolean btnReviewProduct;
 	private boolean btnReviewSeller;
